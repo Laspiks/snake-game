@@ -1,2 +1,4 @@
 # snake-game
-Snake game repo for student project
+Філатов Остап
+Федоров Кирило
+Мартинюк Іван
