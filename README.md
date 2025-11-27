@@ -6,3 +6,4 @@
 # Required
 - gtests
 - make
+- gcc compiler
