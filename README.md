@@ -7,10 +7,12 @@
 - gtests
 - make
 - gcc compiler
-- libncurses5-dev
+- libncurses5-dev (sudo apt install libncurses5-dev)
 
 # Setup steps
 1. git clone https://github.com/Laspiks/snake-game
 2. cd snake-game
 3. make all
 4. make run
+
+# Please use english keyboard while playing
