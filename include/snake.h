@@ -230,7 +230,6 @@ void game_over_screen(const GameState *game);
  * @brief Показує екран перемоги.
  */
 void game_won_screen(const GameState *game);
-
 /**
  * @brief Показує початковий вітальний екран з інструкціями.
  */

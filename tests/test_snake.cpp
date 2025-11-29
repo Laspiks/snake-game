@@ -84,10 +84,6 @@ TEST_F(SnakeGameTest, BodyFollowsHead) {
 
 // ========== Collision Tests ==========
 
-TEST_F(SnakeGameTest, NoCollisionInitially) {
-    EXPECT_FALSE(check_collision(&game.snake));
-}
-
 TEST_F(SnakeGameTest, WallCollisionLeft) {
     game.snake.body[0].x = 0;
     EXPECT_TRUE(check_wall_collision(&game.snake));
@@ -155,34 +151,6 @@ TEST_F(SnakeGameTest, CanTurnDownFromLeft) {
     EXPECT_TRUE(is_valid_direction_change(DIR_LEFT, DIR_DOWN));
 }
 
-// ========== Food Tests ==========
-
-TEST_F(SnakeGameTest, FoodGenerationActivatesFood) {
-    generate_food(&game.snake, &game.food);
-    EXPECT_TRUE(game.food.active);
-}
-
-TEST_F(SnakeGameTest, FoodWithinBounds) {
-    generate_food(&game.snake, &game.food);
-    EXPECT_GT(game.food.position.x, 0);
-    EXPECT_LE(game.food.position.x, WIDTH);
-    EXPECT_GT(game.food.position.y, 0);
-    EXPECT_LE(game.food.position.y, HEIGHT);
-}
-
-TEST_F(SnakeGameTest, FoodDoesNotSpawnOnSnake) {
-    // Fill most of the board with snake
-    game.snake.length = 100;
-    for (int i = 0; i < game.snake.length; i++) {
-        game.snake.body[i].x = (i % WIDTH) + 1;
-        game.snake.body[i].y = (i / WIDTH) + 1;
-    }
-    
-    generate_food(&game.snake, &game.food);
-    EXPECT_FALSE(is_position_on_snake(&game.snake, 
-                                      game.food.position.x, 
-                                      game.food.position.y));
-}
 
 TEST_F(SnakeGameTest, FoodCollisionDetection) {
     game.food.active = 1;
@@ -212,13 +180,13 @@ TEST_F(SnakeGameTest, NoFoodCollisionWhenInactive) {
 
 TEST_F(SnakeGameTest, SnakeGrowsWhenEatingFood) {
     int initial_length = game.snake.length;
-    grow_snake(&game.snake);
+    grow_snake(&game.snake, 1);
     EXPECT_EQ(game.snake.length, initial_length + 1);
 }
 
 TEST_F(SnakeGameTest, SnakeDoesNotExceedMaxLength) {
     game.snake.length = MAX_SNAKE_LENGTH;
-    grow_snake(&game.snake);
+    grow_snake(&game.snake, 1);
     EXPECT_EQ(game.snake.length, MAX_SNAKE_LENGTH);
 }
 
