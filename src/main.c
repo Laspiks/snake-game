@@ -168,10 +168,6 @@ void welcome_screen(void) {
     mvprintw(8, WIDTH / 2 - 15, " |_____/|_| \\_/_/    \\_\\_|\\_\\______|");
     attroff(COLOR_PAIR(COLOR_TITLE) | A_BOLD);
     
-    attron(COLOR_PAIR(COLOR_INFO) | A_BOLD);
-    mvprintw(10, WIDTH / 2 - 10, "=== ENHANCED EDITION ===");
-    attroff(COLOR_PAIR(COLOR_INFO) | A_BOLD);
-    
     // Instructions
     mvprintw(12, WIDTH / 2 - 18, "GOAL: Grow to %d length to WIN!", WIN_LENGTH);
     mvprintw(14, WIDTH / 2 - 15, "CONTROLS:");
